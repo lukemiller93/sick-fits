@@ -5,6 +5,7 @@ import Nav from './Nav';
 const Logo = styled.h1`
   background: red;
   font-size: 4rem;
+  margin-left: 2rem;
   position: relative;
   z-index: 2;
   transform: skew(-7deg);
