@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import React from 'react';
 import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
@@ -37,11 +37,10 @@ const UPDATE_PRODUCT_MUTATION = gql`
   }
 `;
 
-export default function UpdateProduct() {
+export default function UpdateProduct({ id }) {
   // 1. We need to get the existing product
-  const { query } = useRouter();
   const { data, loading, error } = useQuery(SINGLE_PRODUCT_UPDATE_QUERY, {
-    variables: { id: query.id },
+    variables: { id },
   });
   // 2. We need to get the mutation to update the product
   const [
@@ -53,7 +52,6 @@ export default function UpdateProduct() {
   const { inputs, handleChange } = useForm(data?.Product);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
-  console.log({ data, loading, error });
   // 3. We need the form to handle the updates
   return (
     <>
@@ -63,9 +61,9 @@ export default function UpdateProduct() {
       <Form
         onSubmit={async (e) => {
           e.preventDefault();
-          const res = await updateProduct({
+          await updateProduct({
             variables: {
-              id: query.id,
+              id,
               name: inputs.name,
               description: inputs.description,
               price: inputs.price,
