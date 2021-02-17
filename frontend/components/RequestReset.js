@@ -29,8 +29,6 @@ export default function RequestReset() {
     e.preventDefault();
     // send email and password to graphql api
     const res = await signup().catch(console.error);
-    console.log(res);
-    console.log({ data, loading, error });
     resetForm();
   }
 

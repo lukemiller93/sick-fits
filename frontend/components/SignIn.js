@@ -37,7 +37,6 @@ export default function SignIn() {
     e.preventDefault();
     // send email and password to graphql api
     const res = await signin();
-    console.log(res);
     resetForm();
   }
 
