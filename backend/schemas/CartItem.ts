@@ -6,9 +6,9 @@ export const CartItem = list({
   // access:
   ui: {
     listView: {
-      initialColumns: ['product', 'quantity', 'user']
-    }
-  }
+      initialColumns: ['product', 'quantity', 'user'],
+    },
+  },
   fields: {
     quantity: integer({
       defaultValue: 1,
