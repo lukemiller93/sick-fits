@@ -1,3 +1,5 @@
+/* eslint-disable no-return-await */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { KeystoneContext } from '@keystone-next/types';
 import { CartItemCreateInput } from '../.keystone/schema-types';
 import { Session } from '../types';
